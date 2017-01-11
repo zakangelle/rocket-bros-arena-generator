@@ -1,23 +1,41 @@
 const arenas = [
-  'DFH Stadium',
-  'Urban Central',
-  'Mannfield',
-  'Beckwith Park',
-  'Utopia Coliseum',
-  'Wasteland',
-  'Neo Tokyo',
-  'Aquadome',
-  'Starbase ARC'
+  {
+    name: 'Aquadome',
+    variations: ['Standard']
+  },
+  {
+    name: 'Beckwith Park',
+    variations: ['Standard', 'Stormy', 'Midnight']
+  },
+  {
+    name: 'DFH Stadium',
+    variations: ['Standard', 'Stormy']
+  },
+  {
+    name: 'Mannfield',
+    variations: ['Standard', 'Stormy']
+  },
+  {
+    name: 'Neo Tokyo',
+    variations: ['Standard']
+  },
+  {
+    name: 'Starbase ARC',
+    variations: ['Standard']
+  },
+  {
+    name: 'Urban Central',
+    variations: ['Standard', 'Night', 'Dawn']
+  },
+  {
+    name: 'Utopia Coliseum',
+    variations: ['Standard', 'Dusk', 'Snowy']
+  },
+  {
+    name: 'Wasteland',
+    variations: ['Standard', 'Night']
+  },
 ];
-
-const arenaVariations = {
-  'DFH Stadium':  ['Standard', 'Stormy'],
-  'Urban Central':  ['Standard', 'Night', 'Dawn'],
-  'Mannfield':  ['Standard', 'Stormy'],
-  'Beckwith Park':  ['Standard', 'Stormy', 'Midnight'],
-  'Utopia Coliseum':  ['Standard', 'Dusk', 'Snowy'],
-  'Wasteland':  ['Standard', 'Night']
-};
 
 const arenaVetoes = {
   JP: 'Neo Tokyo',
@@ -62,20 +80,17 @@ const games = [
 ];
 
 function filterArenaVetoes(homePlayerVeto, awayPlayerVeto) {
-  return arenas.filter(arena => arena !== homePlayerVeto &&
-    arena !== awayPlayerVeto);
+  return arenas.filter(arena => arena.name !== homePlayerVeto &&
+    arena.name !== awayPlayerVeto);
 }
 
 function getRandomArena(arenas) {
   const arenaIndex = Math.floor(Math.random() * arenas.length);
-  let arena = arenas[arenaIndex];
+  const arena = arenas[arenaIndex];
+  const variationIndex = Math.floor(Math.random() * arena.variations.length);
+  const variation = arena.variations[variationIndex];
 
-  if (arenaVariations[arena]) {
-    const variationIndex = Math.floor(Math.random() * arenaVariations[arena].length);
-    arena += ` (${arenaVariations[arena][variationIndex]})`;
-  }
-
-  return arena;
+  return `${arena.name} (${variation})`;
 }
 
 function setupGame(game) {

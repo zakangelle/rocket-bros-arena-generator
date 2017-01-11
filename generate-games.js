@@ -1,8 +1,6 @@
 module.exports = generateGames;
 
 const arenas = require('./arenas.js');
-const arenaVetoes = require('./arena-vetoes.js');
-const matchups = require('./matchups.js');
 
 /**
  * Filter out player arena vetoes
@@ -30,9 +28,10 @@ function getRandomArena(arenas) {
 
 /**
  * Set up game with home player, away player, and random unvetoed arena
- * @param {Array:array} matchup
+ * @param {Array:string} matchup
+ * @param {Object} arenaVetoes
  */
-function generateGame(matchup) {
+function generateGame(matchup, arenaVetoes) {
   const homePlayer = matchup[0];
   const awayPlayer = matchup[1];
 
@@ -61,11 +60,13 @@ function logGameDetails({ homePlayer, awayPlayer, arena }) {
 }
 
 /**
- * Generate the list of games with player matchups and arena
+ * Generate the list of games with player matchup and arena
+ * @param {Array:array} matchups
+ * @param {Object} arenaVetoes
  */
-function generateGames() {
+function generateGames(matchups, arenaVetoes) {
   matchups.forEach(matchup => {
-    const game = generateGame(matchup);
+    const game = generateGame(matchup, arenaVetoes);
     logGameDetails(game);
   });
 }

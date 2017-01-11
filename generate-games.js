@@ -7,7 +7,7 @@ const arenas = require('./arenas.js');
  * @param {string} homePlayerVeto
  * @param {string} awayPlayerVeto
  */
-function filterArenaVetoes(homePlayerVeto, awayPlayerVeto) {
+function filterOutVetoedArenas(homePlayerVeto, awayPlayerVeto) {
   return arenas.filter(arena => arena.name !== homePlayerVeto &&
     arena.name !== awayPlayerVeto);
 }
@@ -38,7 +38,7 @@ function generateGame(matchup, arenaVetoes) {
   const homePlayerVeto = arenaVetoes[homePlayer];
   const awayPlayerVeto = arenaVetoes[awayPlayer];
 
-  const playableArenas = filterArenaVetoes(homePlayerVeto, awayPlayerVeto);
+  const playableArenas = filterOutVetoedArenas(homePlayerVeto, awayPlayerVeto);
   const arena = getRandomArena(playableArenas);
 
   return {

@@ -72,7 +72,6 @@ function getRandomArena(arenas) {
 
   if (arenaVariations[arena]) {
     const variationIndex = Math.floor(Math.random() * arenaVariations[arena].length);
-
     arena += ` (${arenaVariations[arena][variationIndex]})`;
   }
 

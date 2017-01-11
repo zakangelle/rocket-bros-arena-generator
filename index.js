@@ -87,6 +87,7 @@ function filterArenaVetoes(homePlayerVeto, awayPlayerVeto) {
 function getRandomArena(arenas) {
   const arenaIndex = Math.floor(Math.random() * arenas.length);
   const arena = arenas[arenaIndex];
+
   const variationIndex = Math.floor(Math.random() * arena.variations.length);
   const variation = arena.variations[variationIndex];
 

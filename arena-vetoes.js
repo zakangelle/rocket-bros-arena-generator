@@ -1,10 +1,10 @@
 module.exports = {
-  JP: 'Neo Tokyo',
-  Kevin: '',
-  Damion: 'Neo Tokyo',
-  Drake: '',
-  Zak: 'Starbase ARC',
-  Lyle: '',
-  BVal: '',
-  Ross: 'Aquadome'
+  'jaypee15': 'Neo Tokyo',
+  'not-a-bot': '',
+  'KINGBAB': 'Neo Tokyo',
+  'trivorak': '',
+  'bones': 'Starbase ARC',
+  'poptart': '',
+  'bsting717': '',
+  'Stunbaton': 'Aquadome'
 };

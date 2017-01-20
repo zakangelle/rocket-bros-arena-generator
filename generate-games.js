@@ -52,11 +52,17 @@ function generateGame(matchup, arenaVetoes) {
  * Print out matchup details to the terminal
  * @param {string} homePlayer
  * @param {string} awayPlayer
- * @param {string} arena
  */
 function logGameDetails({ homePlayer, awayPlayer, arena }) {
   console.log('\x1b[36m%s\x1b[0m', `${homePlayer} vs. ${awayPlayer}`);
-  console.log(`${arena}\n`);
+}
+
+function logMatchup(homePlayer, awayPlayer) {
+  console.log('\x1b[36m%s\x1b[0m', `${homePlayer} vs. ${awayPlayer}`);
+}
+
+function logArena(arena) {
+  console.log(`\n${arena}\n`);
 }
 
 /**
@@ -66,7 +72,11 @@ function logGameDetails({ homePlayer, awayPlayer, arena }) {
  */
 function generateGames(matchups, arenaVetoes) {
   matchups.forEach(matchup => {
-    const game = generateGame(matchup, arenaVetoes);
-    logGameDetails(game);
+    logMatchup(matchup[0], matchup[1]);
+
+    for (let i = 0; i < 5; i++) {
+      const game = generateGame(matchup, arenaVetoes);
+      logArena(game.arena);
+    }
   });
 }
